@@ -1,0 +1,9 @@
+@model CheckoutViewModel
+<h1>Оформлення замовлення</h1>
+<form method="post" class="form">
+    <input asp-for="CustomerName" placeholder="Ім’я отримувача" />
+    <input asp-for="Phone" placeholder="Телефон" />
+    <input asp-for="Address" placeholder="Адреса доставки" />
+    <button class="btn" type="submit">Підтвердити замовлення</button>
+    <div asp-validation-summary="All"></div>
+</form>

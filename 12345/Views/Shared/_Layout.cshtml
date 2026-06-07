@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - BlueOrange Shop</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+<header class="topbar">
+    <a class="logo" asp-controller="Home" asp-action="Index">BlueOrange Shop</a>
+    <nav>
+        <a asp-controller="Products" asp-action="Index">Каталог</a>
+        <a asp-controller="Cart" asp-action="Index">Кошик</a>
+        @if (User.Identity?.IsAuthenticated == true)
+        {
+            <span class="user">@User.Identity.Name</span>
+            <a asp-controller="Account" asp-action="Logout">Вийти</a>
+        }
+        else
+        {
+            <a asp-controller="Account" asp-action="Login">Вхід</a>
+            <a class="btn-small" asp-controller="Account" asp-action="Register">Реєстрація</a>
+        }
+    </nav>
+</header>
+<main class="container">
+    @RenderBody()
+</main>
+<footer class="footer">© 2026 BlueOrange Shop — вебзастосунок інтернет-магазину</footer>
+</body>
+</html>

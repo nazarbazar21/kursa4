@@ -1,0 +1,11 @@
+@model Product
+<h1>@Model.Name</h1>
+<div class="details">
+    <div class="image-box large">@Model.Name.Substring(0,1)</div>
+    <div>
+        <p>@Model.Description</p>
+        <p><b>Категорія:</b> @Model.Category?.Name</p>
+        <p class="price">@Model.Price грн</p>
+        <a class="btn" asp-controller="Cart" asp-action="Add" asp-route-productId="@Model.Id">Додати до кошика</a>
+    </div>
+</div>

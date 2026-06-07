@@ -1,0 +1,8 @@
+@model LoginViewModel
+<h1>Авторизація</h1>
+<form method="post" class="form">
+    <input asp-for="Email" placeholder="Email" />
+    <input asp-for="Password" placeholder="Пароль" />
+    <button class="btn" type="submit">Увійти</button>
+    <div asp-validation-summary="All"></div>
+</form>

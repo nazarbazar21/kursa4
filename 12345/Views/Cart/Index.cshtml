@@ -1,0 +1,27 @@
+@model List<CartItem>
+@{
+    ViewData["Title"] = "Кошик";
+    var total = Model.Sum(i => i.Product!.Price * i.Quantity);
+}
+<h1>Кошик</h1>
+@if (!Model.Any())
+{
+    <p>Кошик порожній.</p>
+}
+else
+{
+    <table>
+        <tr><th>Товар</th><th>Кількість</th><th>Ціна</th><th></th></tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Product?.Name</td>
+                <td>@item.Quantity</td>
+                <td>@(item.Product!.Price * item.Quantity) грн</td>
+                <td><a asp-action="Remove" asp-route-id="@item.Id">Видалити</a></td>
+            </tr>
+        }
+    </table>
+    <h2>Разом: @total грн</h2>
+    <a class="btn" asp-controller="Orders" asp-action="Checkout">Оформити замовлення</a>
+}
